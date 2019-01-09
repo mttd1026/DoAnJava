@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2019 at 05:04 PM
+-- Generation Time: Jan 09, 2019 at 08:10 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.1.24
 
@@ -59,6 +59,44 @@ INSERT INTO `dantoc` (`MaDanToc`, `TenDanToc`) VALUES
 ('HM', 'Ho Mong'),
 ('K', 'Kinh'),
 ('KM', 'KhoMe');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gioitinh`
+--
+
+CREATE TABLE `gioitinh` (
+  `MaGioiTinh` varchar(50) NOT NULL,
+  `TenGioiTinh` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gioitinh`
+--
+
+INSERT INTO `gioitinh` (`MaGioiTinh`, `TenGioiTinh`) VALUES
+('Nam', 'Nam'),
+('Nu', 'Nu');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `honnhan`
+--
+
+CREATE TABLE `honnhan` (
+  `MaHonNhan` varchar(50) NOT NULL,
+  `KieuHonNhan` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `honnhan`
+--
+
+INSERT INTO `honnhan` (`MaHonNhan`, `KieuHonNhan`) VALUES
+('ChuaKetHon', 'ChuaKetHon'),
+('KetHon', 'KetHon');
 
 -- --------------------------------------------------------
 
@@ -164,50 +202,54 @@ INSERT INTO `loainhanvien` (`MaLoaiNhanVien`, `TenLoaiNhanVien`) VALUES
 
 CREATE TABLE `nhanvien` (
   `MaNhanVien` int(11) NOT NULL,
-  `Ho` varchar(50) NOT NULL,
-  `Ten` varchar(50) NOT NULL,
-  `TenTiengAnh` varchar(50) NOT NULL,
-  `NgaySinh` date NOT NULL,
-  `NgayThayDoi` date NOT NULL,
-  `NgayThayDoiCN` date NOT NULL,
-  `NgayBatDau` date NOT NULL,
-  `NgayKetThuc` date NOT NULL,
-  `GioiTinh` bit(1) NOT NULL,
-  `DTCty` int(11) NOT NULL,
-  `DTNha` int(11) NOT NULL,
-  `ECty` varchar(50) NOT NULL,
-  `ERieng` varchar(50) NOT NULL,
-  `NoiSinh` varchar(50) NOT NULL,
-  `NguyenQuan` varchar(50) NOT NULL,
-  `TamTru` varchar(50) NOT NULL,
-  `ThuongTru` varchar(50) NOT NULL,
-  `HonNhan` bit(1) NOT NULL,
-  `BaoHiem` varchar(50) NOT NULL,
-  `MaLoaiNhanVien` varchar(11) NOT NULL,
-  `MaKhoi` varchar(11) NOT NULL,
-  `MaTonGiao` varchar(11) NOT NULL,
-  `MaQuocTich` varchar(11) NOT NULL,
-  `MaDanToc` varchar(11) NOT NULL,
-  `MaLoaiHopDong` varchar(11) NOT NULL,
-  `MaNoiLamViec` varchar(11) NOT NULL,
-  `MaPhongBan` int(11) NOT NULL,
-  `MaPhongCN` varchar(11) NOT NULL,
-  `MaChucVu` varchar(11) NOT NULL,
-  `MaTinhThanh` varchar(11) NOT NULL,
-  `MaHuyen` varchar(11) NOT NULL,
-  `MaPhuThuoc` int(11) NOT NULL,
-  `MaTo` int(11) NOT NULL,
-  `Image` varchar(255) NOT NULL
+  `Ho` varchar(50) DEFAULT NULL,
+  `Ten` varchar(50) DEFAULT NULL,
+  `TenTiengAnh` varchar(50) DEFAULT NULL,
+  `NgaySinh` date DEFAULT NULL,
+  `NgayThayDoi` date DEFAULT NULL,
+  `NgayThayDoiCN` date DEFAULT NULL,
+  `NgayBatDau` date DEFAULT NULL,
+  `NgayKetThuc` date DEFAULT NULL,
+  `GioiTinh` varchar(50) DEFAULT NULL,
+  `DTCty` int(11) DEFAULT NULL,
+  `DTNha` int(11) DEFAULT NULL,
+  `ECty` varchar(50) DEFAULT NULL,
+  `ERieng` varchar(50) DEFAULT NULL,
+  `NoiSinh` varchar(50) DEFAULT NULL,
+  `NguyenQuan` varchar(50) DEFAULT NULL,
+  `TamTru` varchar(50) DEFAULT NULL,
+  `ThuongTru` varchar(50) DEFAULT NULL,
+  `HonNhan` varchar(50) DEFAULT NULL,
+  `BaoHiem` varchar(50) DEFAULT NULL,
+  `MaLoaiNhanVien` varchar(11) DEFAULT NULL,
+  `MaKhoi` varchar(11) DEFAULT NULL,
+  `MaTonGiao` varchar(11) DEFAULT NULL,
+  `MaQuocTich` varchar(11) DEFAULT NULL,
+  `MaDanToc` varchar(11) DEFAULT NULL,
+  `MaLoaiHopDong` varchar(11) DEFAULT NULL,
+  `MaNoiLamViec` varchar(11) DEFAULT NULL,
+  `MaPhongCN` varchar(11) DEFAULT NULL,
+  `MaChucVu` varchar(11) DEFAULT NULL,
+  `MaTinhThanh` varchar(11) DEFAULT NULL,
+  `MaHuyen` varchar(11) DEFAULT NULL,
+  `MaPhuThuoc` varchar(11) DEFAULT NULL,
+  `MaTo` varchar(11) DEFAULT NULL,
+  `Image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `nhanvien`
 --
 
-INSERT INTO `nhanvien` (`MaNhanVien`, `Ho`, `Ten`, `TenTiengAnh`, `NgaySinh`, `NgayThayDoi`, `NgayThayDoiCN`, `NgayBatDau`, `NgayKetThuc`, `GioiTinh`, `DTCty`, `DTNha`, `ECty`, `ERieng`, `NoiSinh`, `NguyenQuan`, `TamTru`, `ThuongTru`, `HonNhan`, `BaoHiem`, `MaLoaiNhanVien`, `MaKhoi`, `MaTonGiao`, `MaQuocTich`, `MaDanToc`, `MaLoaiHopDong`, `MaNoiLamViec`, `MaPhongBan`, `MaPhongCN`, `MaChucVu`, `MaTinhThanh`, `MaHuyen`, `MaPhuThuoc`, `MaTo`, `Image`) VALUES
-(2, 'Nguyen', 'Thai', 'ThaiBuff', '1997-09-10', '2016-09-10', '2017-08-12', '2016-09-12', '2018-03-09', b'1', 342576709, 432187635, 'cty123@gmail.com', 'nguyenleminhthai@gmail.com', 'Ho Chi Minh', 'Quang Tri', 'Tan Binh', 'Tan Binh', b'1', '1523649871', 'CT', 'KT', 'P', 'VN', 'K', 'VV', 'BV', 1, '1', '1', '1', 'BH', 1, 1, ''),
-(3, 'Duc', 'Minh', 'MinhBeo', '1997-09-20', '2016-09-10', '2018-01-15', '2017-01-17', '2018-03-09', b'1', 342576708, 358497831, 'cty123@gmail.com', 'ducminhbeo@gmail.com', 'RanhGioiTaiwanVN', 'KhongBiet', 'Quan 5', 'Quan 5', b'0', '1523649878', 'CT', 'KT', 'TC', 'VN', 'HM', 'VV', 'BV', 1, '1', '1', 'BH', 'BH', 1, 1, ''),
-(4, 'Mai', 'Thinh', 'ThinhBuffter', '1997-09-21', '2016-09-10', '2017-09-20', '2018-12-02', '2020-02-06', b'1', 342576707, 342576703, 'cty123@gmail.com', 'maithinh@gmail.com', 'Viet Nam', 'HCM', 'Tan Binh', 'Tan Binh', b'1', '1523649872', 'CT', 'KT', 'TC', 'VN', 'HM', 'VV', 'BV', 1, '1', '1', 'BH', 'BH', 1, 1, '');
+INSERT INTO `nhanvien` (`MaNhanVien`, `Ho`, `Ten`, `TenTiengAnh`, `NgaySinh`, `NgayThayDoi`, `NgayThayDoiCN`, `NgayBatDau`, `NgayKetThuc`, `GioiTinh`, `DTCty`, `DTNha`, `ECty`, `ERieng`, `NoiSinh`, `NguyenQuan`, `TamTru`, `ThuongTru`, `HonNhan`, `BaoHiem`, `MaLoaiNhanVien`, `MaKhoi`, `MaTonGiao`, `MaQuocTich`, `MaDanToc`, `MaLoaiHopDong`, `MaNoiLamViec`, `MaPhongCN`, `MaChucVu`, `MaTinhThanh`, `MaHuyen`, `MaPhuThuoc`, `MaTo`, `Image`) VALUES
+(2, 'Nguyen', 'Thai', 'ThaiBuff', '1997-09-10', '2016-09-10', '2017-08-12', '2016-09-12', '2018-03-09', '1', 342576709, 432187635, 'cty123@gmail.com', 'nguyenleminhthai@gmail.com', 'Ho Chi Minh', 'Quang Tri', 'Tan Binh', 'Tan Binh', '1', '1523649871', 'CT', 'KT', 'P', 'VN', 'K', 'VV', 'BV', '1', '1', '1', 'BH', '1', '1', ''),
+(3, 'Duc', 'Minh', 'MinhBeo', '1997-09-20', '2016-09-10', '2018-01-15', '2017-01-17', '2018-03-09', '1', 342576708, 358497831, 'cty123@gmail.com', 'ducminhbeo@gmail.com', 'RanhGioiTaiwanVN', 'KhongBiet', 'Quan 5', 'Quan 5', '0', '1523649878', 'CT', 'KT', 'TC', 'VN', 'HM', 'VV', 'BV', '1', '1', 'BH', 'BH', '1', '1', ''),
+(4, 'Mai', 'Thinh', 'ThinhBuffter', '1997-09-21', '2016-09-10', '2017-09-20', '2018-12-02', '2020-02-06', '1', 342576707, 342576703, 'cty123@gmail.com', 'maithinh@gmail.com', 'Viet Nam', 'HCM', 'Tan Binh', 'Tan Binh', '1', '1523649872', 'CT', 'KT', 'TC', 'VN', 'HM', 'VV', 'BV', '1', '1', 'BH', 'BH', '1', '1', ''),
+(7, 'Nguyen', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'Nguyen', 'Nguyen', 'czxc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'Vuong', 'Quoc', 'Quocas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'Cao', 'Son', 'SonNui', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tu Du', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 'Mai', 'Thinh', 'ThinhAngel', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tu du', NULL, NULL, 'HCM', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -272,7 +314,7 @@ INSERT INTO `phong_tt_cn` (`MaPhongCN`, `TenPhongCN`, `MaPhuThuoc`) VALUES
 --
 
 CREATE TABLE `phuthuocphong_tt_cn` (
-  `MaPhuThuoc` int(11) NOT NULL,
+  `MaPhuThuoc` varchar(11) NOT NULL,
   `TenPhuThuoc` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -281,7 +323,7 @@ CREATE TABLE `phuthuocphong_tt_cn` (
 --
 
 INSERT INTO `phuthuocphong_tt_cn` (`MaPhuThuoc`, `TenPhuThuoc`) VALUES
-(1, 'Benh vien dong nai');
+('1', 'Benh vien dong nai');
 
 -- --------------------------------------------------------
 
@@ -328,7 +370,7 @@ INSERT INTO `tinh_thanh` (`MaTinhThanh`, `TenTinhThanh`) VALUES
 --
 
 CREATE TABLE `to` (
-  `MaTo` int(11) NOT NULL,
+  `MaTo` varchar(11) NOT NULL,
   `TenTo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -337,7 +379,7 @@ CREATE TABLE `to` (
 --
 
 INSERT INTO `to` (`MaTo`, `TenTo`) VALUES
-(1, '3');
+('1', '3');
 
 -- --------------------------------------------------------
 
@@ -374,6 +416,18 @@ ALTER TABLE `chucvu`
 --
 ALTER TABLE `dantoc`
   ADD PRIMARY KEY (`MaDanToc`);
+
+--
+-- Indexes for table `gioitinh`
+--
+ALTER TABLE `gioitinh`
+  ADD PRIMARY KEY (`MaGioiTinh`);
+
+--
+-- Indexes for table `honnhan`
+--
+ALTER TABLE `honnhan`
+  ADD PRIMARY KEY (`MaHonNhan`);
 
 --
 -- Indexes for table `huyen`
