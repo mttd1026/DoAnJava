@@ -1,17 +1,21 @@
 package ims.gui;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /*
  * @version 1.10 25 Aug 2017
  * @author Hamza Yasin
  */
 public class Splash extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form SplashForm
      */
     public Splash() {
         initComponents();
+        
       
         new Thread()
         {
@@ -33,7 +37,8 @@ public class Splash extends javax.swing.JFrame {
             }
         }.start();
     }
-
+    
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

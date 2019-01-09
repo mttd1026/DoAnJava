@@ -5,15 +5,13 @@
  */
 package ims.dal;
 
-import ims.dao.Nhanvien;
-import static java.nio.file.Files.delete;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,14 +30,20 @@ public class EmployeeDAL {
     
     //Ham ket noi
     public EmployeeDAL(){
-         try {                
-            Class.forName(JDBC_DRIVER);
-            con= DriverManager.getConnection(DB_URL,USER,PASS);
-        } catch (SQLException | ClassNotFoundException ex) {
+        try {
+        String dbURL = "jdbc:mysql://localhost/employee";
+        String username = "root";
+        String password = "";
+        con = DriverManager.getConnection(DB_URL, USER, PASS);
+
+        if (con != null) {
+                System.out.println("Kết nối thành công");
+            }
+        }catch (SQLException ex) {
             Logger.getLogger(EmployeeDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+        
     //Viet lay du lieu tu bang trong database
     public ResultSet getData(String stringSQL){
         try {
@@ -116,7 +120,5 @@ public class EmployeeDAL {
             Logger.getLogger(EmployeeDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return row;
-    }
-
-   
+    } 
 }

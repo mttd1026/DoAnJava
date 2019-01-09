@@ -12,19 +12,22 @@ import java.awt.Toolkit;
 import ims.dal.EmployeeDAL;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author NAT
  */
-public class EmployeeList extends javax.swing.JFrame implements ActionListener{
+public final class EmployeeList extends javax.swing.JFrame implements ActionListener{
 
-    private int flag = 0;
+    private final int flag = 0;
     EmployeeDAL con;
     /** Creates new form EmployeeList */
     public EmployeeList() {
@@ -32,6 +35,7 @@ public class EmployeeList extends javax.swing.JFrame implements ActionListener{
         setInfoDialog();
         con = new EmployeeDAL();
         showData();
+        Keylistener();
     }
     public  void setInfoDialog() {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -41,7 +45,7 @@ public class EmployeeList extends javax.swing.JFrame implements ActionListener{
         setResizable(false);
     }
     public void showData(){
-        String[] columnNames = {"Mã NV","Họ lót","Tên","Ngày sinh","Nơi sinh","Tên Tiếng Anh", "Thường Trú"};
+        String[] columnNames = {"Mã NV","Họ lót","Tên","Ngày sinh","Nơi sinh","Tên Tiếng Anh", "Thường Trú","Email Riêng"};
         
         //Chua du lieu tu sql do vao jtable
         DefaultTableModel model = new DefaultTableModel();       
@@ -55,7 +59,7 @@ public class EmployeeList extends javax.swing.JFrame implements ActionListener{
         String NoiSinh = "";
         String TenTiengAnh = "";
         String ThuongTru = "";
-        
+        String EmailRieng = "";
         ResultSet rs = con.getData("SELECT * FROM nhanvien");
         try {
             while(rs.next()){
@@ -66,15 +70,37 @@ public class EmployeeList extends javax.swing.JFrame implements ActionListener{
                 NoiSinh = rs.getString("NoiSinh");
                 TenTiengAnh = rs.getString("TenTiengAnh");
                 ThuongTru = rs.getString("ThuongTru");
-             
-                model.addRow(new Object[] {MaNV,HoLot,Ten,NgaySinh,NoiSinh,TenTiengAnh,ThuongTru});
+                EmailRieng = rs.getString("ERieng");
+                model.addRow(new Object[] {MaNV,HoLot,Ten,NgaySinh,NoiSinh,TenTiengAnh,ThuongTru,EmailRieng});
             }
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
     
-    
+     public void Keylistener(){
+        this.setFocusable(true);
+        this.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+                    if(JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn thoát chương trình?","Thông báo!",2)==0)                        
+                        dispose();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });      
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -221,10 +247,8 @@ public class EmployeeList extends javax.swing.JFrame implements ActionListener{
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EmployeeList().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new EmployeeList().setVisible(true);
         });
     }
 
@@ -247,9 +271,4 @@ public class EmployeeList extends javax.swing.JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    void setModel(DefaultTableModel model) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
