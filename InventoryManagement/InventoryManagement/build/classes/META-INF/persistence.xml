@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="InventoryManagementPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>ims.dao.Loaihopdong</class>
+    <class>ims.dao.Khuvuc</class>
+    <class>ims.dao.To</class>
+    <class>ims.dao.Noilamviec</class>
+    <class>ims.dao.Quoctich</class>
+    <class>ims.dao.TinhThanh</class>
+    <class>ims.dao.PhuthuocphongTtCn</class>
+    <class>ims.dao.PhongTtCn</class>
+    <class>ims.dao.Chucvu</class>
+    <class>ims.dao.Tongiao</class>
+    <class>ims.dao.Khoi</class>
+    <class>ims.dao.Nhanvien</class>
+    <class>ims.dao.Phongban</class>
+    <class>ims.dao.Huyen</class>
+    <class>ims.dao.Loainhanvien</class>
+    <class>ims.dao.Dantoc</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/employee?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+    </properties>
+  </persistence-unit>
+</persistence>
