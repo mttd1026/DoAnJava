@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2019 at 09:15 AM
+-- Generation Time: Jan 09, 2019 at 10:12 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.1.24
 
@@ -195,17 +195,19 @@ CREATE TABLE `nhanvien` (
   `MaChucVu` varchar(11) NOT NULL,
   `MaTinhThanh` varchar(11) NOT NULL,
   `MaHuyen` varchar(11) NOT NULL,
-  `MaPhuThuoc` int(11) NOT NULL
+  `MaPhuThuoc` int(11) NOT NULL,
+  `MaTo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `nhanvien`
 --
 
-INSERT INTO `nhanvien` (`MaNhanVien`, `Ho`, `Ten`, `TenTiengAnh`, `NgaySinh`, `NgayThayDoi`, `NgayThayDoiCN`, `NgayBatDau`, `NgayKetThuc`, `GioiTinh`, `DTCty`, `DTNha`, `ECty`, `ERieng`, `NoiSinh`, `NguyenQuan`, `TamTru`, `ThuongTru`, `HonNhan`, `BaoHiem`, `MaLoaiNhanVien`, `MaKhoi`, `MaTonGiao`, `MaQuocTich`, `MaDanToc`, `MaLoaiHopDong`, `MaNoiLamViec`, `MaPhongBan`, `MaPhongCN`, `MaChucVu`, `MaTinhThanh`, `MaHuyen`, `MaPhuThuoc`) VALUES
-(1, 'Nguyen', 'Cuong', 'CuongCrazy', '1997-09-20', '2018-09-10', '2017-08-12', '2016-09-12', '2018-03-09', b'1', 342576708, 342576708, 'cuongnguyenhtu@gmail.com', 'cuongnguyenhtu@gmail.com', 'Tu Du', 'Hung Yen', 'Thu Duc', 'Benh vien tâm then trung uong 2 Dong Nai', b'1', '1523649870', '1', '1', '1', '1', '1', '1', '1', 1, '1', '1', '1', '1', 1),
-(2, 'Nguyen', 'Thai', 'ThaiBuff', '1997-09-10', '2016-09-10', '2017-08-12', '2016-09-12', '2018-03-09', b'1', 342576709, 432187635, 'cty123@gmail.com', 'nguyenleminhthai@gmail.com', 'Ho Chi Minh', 'Quang Tri', 'Tan Binh', 'Tan Binh', b'1', '1523649871', 'CT', 'KT', 'P', 'VN', 'K', 'VV', 'BV', 1, '1', '1', '1', 'BH', 1),
-(3, 'Duc', 'Minh', 'MinhBeo', '1997-09-20', '2016-09-10', '2018-01-15', '2017-01-17', '2018-03-09', b'1', 342576708, 358497831, 'cty123@gmail.com', 'ducminhbeo@gmail.com', 'RanhGioiTaiwanVN', 'KhongBiet', 'Quan 5', 'Quan 5', b'0', '1523649878', 'CT', 'KT', 'TC', 'VN', 'HM', 'VV', 'BV', 1, '1', '1', 'BH', 'BH', 1);
+INSERT INTO `nhanvien` (`MaNhanVien`, `Ho`, `Ten`, `TenTiengAnh`, `NgaySinh`, `NgayThayDoi`, `NgayThayDoiCN`, `NgayBatDau`, `NgayKetThuc`, `GioiTinh`, `DTCty`, `DTNha`, `ECty`, `ERieng`, `NoiSinh`, `NguyenQuan`, `TamTru`, `ThuongTru`, `HonNhan`, `BaoHiem`, `MaLoaiNhanVien`, `MaKhoi`, `MaTonGiao`, `MaQuocTich`, `MaDanToc`, `MaLoaiHopDong`, `MaNoiLamViec`, `MaPhongBan`, `MaPhongCN`, `MaChucVu`, `MaTinhThanh`, `MaHuyen`, `MaPhuThuoc`, `MaTo`) VALUES
+(1, 'Nguyen', 'Cuong', 'CuongCrazy', '1997-09-20', '2018-09-10', '2017-08-12', '2016-09-12', '2018-03-09', b'1', 342576708, 342576708, 'cuongnguyenhtu@gmail.com', 'cuongnguyenhtu@gmail.com', 'Tu Du', 'Hung Yen', 'Thu Duc', 'Benh vien tâm then trung uong 2 Dong Nai', b'1', '1523649870', '1', '1', '1', '1', '1', '1', '1', 1, '1', '1', '1', '1', 1, 1),
+(2, 'Nguyen', 'Thai', 'ThaiBuff', '1997-09-10', '2016-09-10', '2017-08-12', '2016-09-12', '2018-03-09', b'1', 342576709, 432187635, 'cty123@gmail.com', 'nguyenleminhthai@gmail.com', 'Ho Chi Minh', 'Quang Tri', 'Tan Binh', 'Tan Binh', b'1', '1523649871', 'CT', 'KT', 'P', 'VN', 'K', 'VV', 'BV', 1, '1', '1', '1', 'BH', 1, 1),
+(3, 'Duc', 'Minh', 'MinhBeo', '1997-09-20', '2016-09-10', '2018-01-15', '2017-01-17', '2018-03-09', b'1', 342576708, 358497831, 'cty123@gmail.com', 'ducminhbeo@gmail.com', 'RanhGioiTaiwanVN', 'KhongBiet', 'Quan 5', 'Quan 5', b'0', '1523649878', 'CT', 'KT', 'TC', 'VN', 'HM', 'VV', 'BV', 1, '1', '1', 'BH', 'BH', 1, 1),
+(4, 'Mai', 'Thinh', 'ThinhBuffter', '1997-09-21', '2016-09-10', '2017-09-20', '2018-12-02', '2020-02-06', b'1', 342576707, 342576703, 'cty123@gmail.com', 'maithinh@gmail.com', 'Viet Nam', 'HCM', 'Tan Binh', 'Tan Binh', b'1', '1523649872', 'CT', 'KT', 'TC', 'VN', 'HM', 'VV', 'BV', 1, '1', '1', 'BH', 'BH', 1, 1);
 
 -- --------------------------------------------------------
 
