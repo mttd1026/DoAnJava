@@ -51,8 +51,8 @@ public class Employee extends javax.swing.JFrame {
     }
     
     public void showData() {
-           String[] columnNames = {"MãNV"
-//                  , "MãLNV", "MãKhối" ,"MãTG","MãQT","MãDT"," Họ lót", "Tên", "Tên Tiếng Anh","Ngày Sinh", "Ngày Thay Đổi", "Giới Tính", "DTCty", "DTNhà"
+           String[] columnNames = {"MãNV", "Tên Tiếng Anh"
+//                  , "MãLNV", "MãKhối" ,"MãTG","MãQT","MãDT"," Họ lót", "Tên","Ngày Sinh", "Ngày Thay Đổi", "Giới Tính", "DTCty", "DTNhà"
 //                ," ECty", "ERiêng","Nơi Sinh", "Nguyên Quán", "Tạm Trú", "Thường Trú", "Hôn Nhân", "Bảo Hiểm","Ngày Thay Đổi CN","Ngày Bắt Đầu","Ngày Kết Thúc"
 //                ,"MãCV","MãLHĐ","MãPhòngCN","MãPhòngThuộc","MãNLV"
                 };
@@ -64,6 +64,7 @@ public class Employee extends javax.swing.JFrame {
         jTable1.setAutoResizeMode(jTable1.AUTO_RESIZE_OFF);
 
         String MaNV = "";
+        String TenTiengAnh = "";
 //        String MaPhongCN = "";
 //        String MaCV = "";
 //        String MaLHD = "";
@@ -77,7 +78,7 @@ public class Employee extends javax.swing.JFrame {
 //        String MaDT = "";
 //        String HoLot = "";
 //        String Ten = "";
-//        String TenTiengAnh = "";
+
 //        String NgaySinh = "";
 //        String NgayThayDoi = "";
 //        String NgayThayDoiCN = "";
@@ -100,6 +101,7 @@ public class Employee extends javax.swing.JFrame {
         try {
             while (rs.next()) {
                 MaNV = rs.getString("MaNhanVien");
+                TenTiengAnh = rs.getString("TenTiengAnh");
 //                MaLNV = rs.getString("MaLoaiNhanVien");
 //                MaPhongCN = rs.getString("MaPhongCN");
 //                MaLHD =rs.getString("MaLoaiHopDong");
@@ -112,7 +114,7 @@ public class Employee extends javax.swing.JFrame {
 //                MaDT = rs.getString("MaDanToc");
 //                HoLot = rs.getString("Ho");
 //                Ten = rs.getString("Ten");
-//                TenTiengAnh = rs.getString("TenTiengAnh");
+
 //                NgaySinh = rs.getString("NgaySinh");
 //                NgayThayDoi = rs.getString("NgayThayDoi");
 //                NgayThayDoiCN = rs.getString("NgayThayDoiCN");
@@ -131,9 +133,9 @@ public class Employee extends javax.swing.JFrame {
 //                BaoHiem = rs.getString("BaoHiem");
 
 
-                model.addRow(new Object[]{MaNV
+                model.addRow(new Object[]{MaNV, TenTiengAnh
 //                        , 
-//                    MaLNV,MaPhongCN,MaLHD,MaPhongThuoc,MaCV, MaKhoi, MaTG, MaQT, MaDT, HoLot, Ten, TenTiengAnh, NgaySinh,
+//                    MaLNV,MaPhongCN,MaLHD,MaPhongThuoc,MaCV, MaKhoi, MaTG, MaQT, MaDT, HoLot, Ten, NgaySinh,
 //                    NgayThayDoi,NgayThayDoiCN,NgayBatDau,NgayKetThuc, GioiTinh, DTCty, DTNha, ECty, ERieng, NoiSinh, NguyenQuan, TamTru,ThuongTru,HonNhan,BaoHiem
                 });
             }
@@ -156,6 +158,8 @@ public class Employee extends javax.swing.JFrame {
             ResultSet rsGiamsatkhuvuc = con.getData("SELECT * from khuvuc");
             ResultSet rsTinh = con.getData("SELECT * from tinh_thanh");
             ResultSet rsHuyen = con.getData("SELECT * from huyen");
+            
+            
             
             while (rsLoaiHopDong.next()) {
                 this.jcbLoaiHopDong.addItem(rsLoaiHopDong.getString("MaLoaiHopDong"));
@@ -190,15 +194,11 @@ public class Employee extends javax.swing.JFrame {
             while (rsTinh.next()) {
                 this.jcbtinh.addItem(rsTinh.getString("MaTinhThanh"));
             }  
-            while (rsTinh.next()) {
-                this.jcbtinh1.addItem(rsTinh.getString("MaTinhThanh"));
-            } 
+            
             while (rsHuyen.next()) {
                 this.jcbhuyen.addItem(rsHuyen.getString("MaHuyen"));
             } 
-            while (rsHuyen.next()) {
-                this.jcbhuyen1.addItem(rsHuyen.getString("MaHuyen"));
-            } 
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex, "Thông báo lỗi", 1);
         }
@@ -214,36 +214,40 @@ public class Employee extends javax.swing.JFrame {
     public void insertData() {
         String[] string = {
             jtfMaNV.getText(),
+            jtfTenTA.getText(),
             jtfHoLot.getText(),
             jtfTen.getText(),
-            jtfTenTA.getText(),
-            jtfNgaySinh.getText(),
-            jtfNgayThayDoi.getText(),
-            jtfNgayThayDoiCN.getText(),
-            jtfBD.getText(),
-            jtfHDKT.getText(),
-            jtfDTCTY.getText(),
-            jtfDTN.getText(),
-            jtfEmailCTY.getText(),
-            jtfEmailRieng.getText(),
-            jtfNoisinh.getText(),
-            jtfNguyenquan.getText(),
-            jtfTamtru.getText(),
             jtfThuongtru.getText(),
-            jtfBHXH.getText(),
-            jcbLoainhanvien.getSelectedItem().toString(),
-            jcbKhoi.getSelectedItem().toString(),
-            jtfTongiao.getText(),
-            jtfQuoctich.getText(),
-            jtfDantoc.getText(),
-            jcbLoaiHopDong.getSelectedItem().toString(),
-            jcbNoiLV.getSelectedItem().toString(),
-            jcbPhong.getSelectedItem().toString(),
-            jcbChucvu.getSelectedItem().toString(),
-            jcbtinh.getSelectedItem().toString(),
-            jcbhuyen.getSelectedItem().toString(),
-            jcbThuocPhong.getSelectedItem().toString(),
-            jcbTo.getSelectedItem().toString()};
+            jtfNoisinh.getText(),
+//            jtfNgaySinh.getText(),
+            
+//            jtfEmailRieng.getText(),
+//            jtfNgayThayDoi.getText(),
+//            jtfNgayThayDoiCN.getText(),
+//            jtfBD.getText(),
+//            jtfHDKT.getText(),
+//            jtfDTCTY.getText(),
+//            jtfDTN.getText(),
+//            jtfEmailCTY.getText(),
+            
+//            jtfNguyenquan.getText(),
+//            jtfTamtru.getText(),
+//            jtfBHXH.getText(),
+//            path.getText(),
+//            jcbLoainhanvien.getSelectedItem().toString(),
+//            jcbKhoi.getSelectedItem().toString(),
+//            jtfTongiao.getText(),
+//            jtfQuoctich.getText(),
+//            jtfDantoc.getText(),
+//            jcbLoaiHopDong.getSelectedItem().toString(),
+//            jcbNoiLV.getSelectedItem().toString(),
+//            jcbPhong.getSelectedItem().toString(),
+//            jcbChucvu.getSelectedItem().toString(),
+//            jcbtinh.getSelectedItem().toString(),
+//            jcbhuyen.getSelectedItem().toString(),
+//            jcbThuocPhong.getSelectedItem().toString(),
+//            jcbTo.getSelectedItem().toString()
+        };
         int insert = con.EMPLOYEE_Insert(string);
         if (insert > 0) {
             JOptionPane.showMessageDialog(this, "Thêm Employee thành công!");
@@ -254,37 +258,41 @@ public class Employee extends javax.swing.JFrame {
     }
 
     public void updateData() {
-        String[] stringSQL = {jtfMaNV.getText(),
+        String[] stringSQL = {
+            jtfMaNV.getText(),
+            jtfTenTA.getText(),
             jtfHoLot.getText(),
             jtfTen.getText(),
-            jtfTenTA.getText(),
-            jtfNgaySinh.getText(),
-            jtfNgayThayDoi.getText(),
-            jtfNgayThayDoiCN.getText(),
-            jtfBD.getText(),
-            jtfHDKT.getText(),
-            jtfDTCTY.getText(),
-            jtfDTN.getText(),
-            jtfEmailCTY.getText(),
-            jtfEmailRieng.getText(),
-            jtfNoisinh.getText(),
-            jtfNguyenquan.getText(),
-            jtfTamtru.getText(),
             jtfThuongtru.getText(),
-            jtfBHXH.getText(),
-            jcbLoainhanvien.getSelectedItem().toString(),
-            jcbKhoi.getSelectedItem().toString(),
-            jtfTongiao.getText(),
-            jtfQuoctich.getText(),
-            jtfDantoc.getText(),
-            jcbLoaiHopDong.getSelectedItem().toString(),
-            jcbNoiLV.getSelectedItem().toString(),
-            jcbPhong.getSelectedItem().toString(),
-            jcbChucvu.getSelectedItem().toString(),
-            jcbtinh.getSelectedItem().toString(),
-            jcbhuyen.getSelectedItem().toString(),
-            jcbThuocPhong.getSelectedItem().toString(),
-            jcbTo.getSelectedItem().toString()};
+            jtfNoisinh.getText(),
+//            jtfNgaySinh.getText(),
+//            jtfNgayThayDoi.getText(),
+//            jtfNgayThayDoiCN.getText(),
+//            jtfBD.getText(),
+//            jtfHDKT.getText(),
+//            jtfDTCTY.getText(),
+//            jtfDTN.getText(),
+//            jtfEmailCTY.getText(),
+//            jtfEmailRieng.getText(),
+
+//            jtfNguyenquan.getText(),
+//            jtfTamtru.getText(),
+
+//            jtfBHXH.getText(),
+//            jcbLoainhanvien.getSelectedItem().toString(),
+//            jcbKhoi.getSelectedItem().toString(),
+//            jtfTongiao.getText(),
+//            jtfQuoctich.getText(),
+//            jtfDantoc.getText(),
+//            jcbLoaiHopDong.getSelectedItem().toString(),
+//            jcbNoiLV.getSelectedItem().toString(),
+//            jcbPhong.getSelectedItem().toString(),
+//            jcbChucvu.getSelectedItem().toString(),
+//            jcbtinh.getSelectedItem().toString(),
+//            jcbhuyen.getSelectedItem().toString(),
+//            jcbThuocPhong.getSelectedItem().toString(),
+//            jcbTo.getSelectedItem().toString()
+        };
         int update = con.EMPLOYEE_Update(stringSQL);
         if (update > 0) {
             JOptionPane.showMessageDialog(this, "Sửa thành công!");
@@ -398,8 +406,6 @@ public class Employee extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jtfTenTA = new javax.swing.JTextField();
         jtfqltt = new javax.swing.JTextField();
-        jrdNam = new javax.swing.JRadioButton();
-        jrdNu = new javax.swing.JRadioButton();
         jLabel26 = new javax.swing.JLabel();
         jcbLoaiHopDong = new javax.swing.JComboBox<>();
         jcbChucvu = new javax.swing.JComboBox<>();
@@ -421,13 +427,12 @@ public class Employee extends javax.swing.JFrame {
         path = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jcbGT = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jrdChua = new javax.swing.JRadioButton();
-        jrddakethon = new javax.swing.JRadioButton();
         jtfNoisinh = new javax.swing.JTextField();
         jtfNguyenquan = new javax.swing.JTextField();
         jtfThuongtru = new javax.swing.JTextField();
@@ -446,23 +451,18 @@ public class Employee extends javax.swing.JFrame {
         jtfQuoctich = new javax.swing.JTextField();
         jtfTongiao = new javax.swing.JTextField();
         jtfNgaySinh = new javax.swing.JTextField();
+        jcbHonNhan = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
         jtfDTN = new javax.swing.JTextField();
         jtfEmailRieng = new javax.swing.JTextField();
         jtfDTTT = new javax.swing.JTextField();
         jtfDCTT = new javax.swing.JTextField();
         jtfTamtru = new javax.swing.JTextField();
-        jtfPhuong1 = new javax.swing.JTextField();
-        jcbtinh1 = new javax.swing.JComboBox<>();
-        jcbhuyen1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -576,10 +576,6 @@ public class Employee extends javax.swing.JFrame {
 
         jLabel25.setText("Giảm sát khu vực:");
 
-        jrdNam.setText("Nam");
-
-        jrdNu.setText("Nữ");
-
         jLabel26.setText("Khu vực:");
 
         jtfBD.addActionListener(new java.awt.event.ActionListener() {
@@ -665,7 +661,7 @@ public class Employee extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtfDTCTY, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jtfBD, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                                        .addComponent(jtfBD, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel23)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -687,7 +683,7 @@ public class Employee extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jcbNoiLV, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                                 .addComponent(jcbKV, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jcbThuocPhong, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jcbTo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -715,10 +711,7 @@ public class Employee extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfTenTA)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jrdNam, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jrdNu)
+                                .addComponent(jcbGT, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -754,9 +747,8 @@ public class Employee extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jtfHoLot)
                             .addComponent(jLabel15)
-                            .addComponent(jrdNam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jrdNu))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                            .addComponent(jcbGT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jtfTen)
@@ -831,10 +823,6 @@ public class Employee extends javax.swing.JFrame {
 
         jLabel31.setText("Thường trú:");
 
-        jrdChua.setText("Chưa kết hôn");
-
-        jrddakethon.setText("Đã kết hôn");
-
         jLabel32.setText("Trình độ:");
 
         jLabel33.setText("Dân tộc:");
@@ -883,10 +871,8 @@ public class Employee extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jtfNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jrdChua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jrddakethon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jcbHonNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jtfNoisinh)
                             .addComponent(jtfThuongtru))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -911,15 +897,15 @@ public class Employee extends javax.swing.JFrame {
                                 .addGap(12, 12, 12)
                                 .addComponent(jLabel36)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfPhuong)
+                                .addComponent(jtfPhuong, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel37)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcbtinh, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jcbtinh, 0, 240, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel38)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jcbhuyen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jcbhuyen, 0, 240, Short.MAX_VALUE))))
                     .addComponent(jtfNguyenquan))
                 .addGap(10, 10, 10))
         );
@@ -928,14 +914,13 @@ public class Employee extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jrdChua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jrddakethon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel32)
                     .addComponent(jLabel34)
                     .addComponent(jtfTrinhdo)
                     .addComponent(jtfQuoctich)
-                    .addComponent(jtfNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                    .addComponent(jtfNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbHonNhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -976,12 +961,6 @@ public class Employee extends javax.swing.JFrame {
 
         jLabel44.setText("Địa chỉ tạm thời:");
 
-        jLabel45.setText("Xã/phường:");
-
-        jLabel46.setText("Tỉnh:");
-
-        jLabel47.setText("Huyện:");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -999,21 +978,10 @@ public class Employee extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel43)
-                    .addComponent(jLabel44)
-                    .addComponent(jLabel45))
+                    .addComponent(jLabel44))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jtfPhuong1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel46)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbtinh1, 0, 252, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel47)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jcbhuyen1, 0, 253, Short.MAX_VALUE))
-                    .addComponent(jtfDCTT)
+                    .addComponent(jtfDCTT, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
                     .addComponent(jtfDTTT))
                 .addGap(10, 10, 10))
         );
@@ -1034,16 +1002,8 @@ public class Employee extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
-                    .addComponent(jLabel45)
-                    .addComponent(jLabel46)
-                    .addComponent(jLabel47)
-                    .addComponent(jtfTamtru)
-                    .addComponent(jtfPhuong1)
-                    .addComponent(jcbtinh1)
-                    .addComponent(jcbhuyen1)))
+                    .addComponent(jtfTamtru)))
         );
-
-        jtfPhuong1.getAccessibleContext().setAccessibleName("jftPhuong");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1116,6 +1076,11 @@ public class Employee extends javax.swing.JFrame {
             btNew.setEnabled(true);
             btEdit.setEnabled(true);
             btDelete.setEnabled(true);
+        }else if(flag == 2){
+            updateData();
+            btNew.setEnabled(true);
+            btEdit.setEnabled(true);
+            btDelete.setEnabled(true); 
         }else{
             if(this.jtfMaNV.getText().length() == 0)
                 JOptionPane.showMessageDialog(null,"Bạn cần chọn Mã nhân viên để xóa","Thông báo lỗi!", 1);
@@ -1314,9 +1279,6 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -1328,6 +1290,8 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jcbChucvu;
     private javax.swing.JComboBox<String> jcbGSKV;
+    private javax.swing.JComboBox<String> jcbGT;
+    private javax.swing.JComboBox<String> jcbHonNhan;
     private javax.swing.JComboBox<String> jcbKV;
     private javax.swing.JComboBox<String> jcbKhoi;
     private javax.swing.JComboBox<String> jcbLoaiHopDong;
@@ -1337,14 +1301,8 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbThuocPhong;
     private javax.swing.JComboBox<String> jcbTo;
     private javax.swing.JComboBox<String> jcbhuyen;
-    private javax.swing.JComboBox<String> jcbhuyen1;
     private javax.swing.JComboBox<String> jcbtinh;
-    private javax.swing.JComboBox<String> jcbtinh1;
     private javax.swing.JLabel jlb_Image;
-    private javax.swing.JRadioButton jrdChua;
-    private javax.swing.JRadioButton jrdNam;
-    private javax.swing.JRadioButton jrdNu;
-    private javax.swing.JRadioButton jrddakethon;
     private javax.swing.JTextField jtfBD;
     private javax.swing.JTextField jtfBHXH;
     private javax.swing.JTextField jtfDCTT;
@@ -1363,7 +1321,6 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JTextField jtfNguyenquan;
     private javax.swing.JTextField jtfNoisinh;
     private javax.swing.JTextField jtfPhuong;
-    private javax.swing.JTextField jtfPhuong1;
     private javax.swing.JTextField jtfQuoctich;
     private javax.swing.JTextField jtfTamtru;
     private javax.swing.JTextField jtfTen;

@@ -45,7 +45,7 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
         setResizable(false);
     }
     public void showData(){
-        String[] columnNames = {"Mã NV","Họ lót","Tên","Ngày sinh","Nơi sinh","Tên Tiếng Anh", "Thường Trú","Email Riêng"};
+        String[] columnNames = {"Mã NV","Họ lót","Tên","Nơi sinh","Tên Tiếng Anh", "Thường Trú"};
         
         //Chua du lieu tu sql do vao jtable
         DefaultTableModel model = new DefaultTableModel();       
@@ -66,12 +66,12 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
                 MaNV = rs.getString("MaNhanVien");
                 HoLot = rs.getString("Ho");
                 Ten = rs.getString("Ten");
-                NgaySinh = rs.getString("NgaySinh");
+//                NgaySinh = rs.getString("NgaySinh");
                 NoiSinh = rs.getString("NoiSinh");
                 TenTiengAnh = rs.getString("TenTiengAnh");
                 ThuongTru = rs.getString("ThuongTru");
-                EmailRieng = rs.getString("ERieng");
-                model.addRow(new Object[] {MaNV,HoLot,Ten,NgaySinh,NoiSinh,TenTiengAnh,ThuongTru,EmailRieng});
+//                EmailRieng = rs.getString("ERieng");
+                model.addRow(new Object[] {MaNV,HoLot,Ten,NoiSinh,TenTiengAnh,ThuongTru});
             }
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -144,6 +144,11 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton2);
         jToolBar1.add(jSeparator2);
 
@@ -218,6 +223,12 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
        emGui.setVisible(true);
        showData();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Employee emGui= new Employee();
+        emGui.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

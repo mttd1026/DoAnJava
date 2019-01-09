@@ -60,10 +60,14 @@ public class EmployeeDAL {
     //Viet ham insert du lieu
     public int EMPLOYEE_Insert (String[] string){
         int row = 0;
-        String insert = "INSERT INTO nhanvien(MaNhanVien, Ho, Ten, TenTiengAnh	, NgaySinh, NgayThayDoi,NgayThayDoiCN,NgayBatDau,NgayKetThuc, GioiTinh, DTCty, DTNha"
-                + ", ECty, ERieng,NoiSinh, NguyenQuan, TamTru, ThuongTru, HonNhan, BaoHiem"
-                + ", MaLoaiNhanVien, MaKhoi ,MaTonGiao,MaQuocTich,MaDanToc"
-                + ", MaTinhThanh,MaLoaiHopDong,MaNoiLamViec,MaPhongBan,MaPhongCN,MaChucVu,MaHuyen,MaPhuThuoc) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String insert = "INSERT INTO nhanvien(MaNhanVien,TenTiengAnh,Ho,Ten,ThuongTru,NoiSinh) VALUES(?,?,?,?,?,?)";
+//                + ""
+//                + ", NgayThayDoi,NgayThayDoiCN,NgayBatDau,NgayKetThuc, GioiTinh.NgaySinh"DTCty, DTNha,ERieng,ECty,NguyenQuan, TamTru, BaoHiem
+//                + ",  HonNhan"
+//                + ", MaLoaiNhanVien, MaKhoi ,MaTonGiao,MaQuocTich,MaDanToc"
+//                + ", MaLoaiHopDong, MaTinhThanh,MaNoiLamViec,MaPhongCN,MaChucVu,MaHuyen,MaPhuThuoc,MaTo)"
+                
+//                + "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement stament;
         try {
             stament = con.prepareCall(insert);          
@@ -73,34 +77,34 @@ public class EmployeeDAL {
             stament.setString(4,string[3]);
             stament.setString(5,string[4]);
             stament.setString(6,string[5]);
-            stament.setString(7,string[6]);
-            stament.setString(8,string[7]);
-            stament.setString(9,string[8]);
-            stament.setString(10,string[9]);
-            stament.setString(11,string[10]);
-            stament.setString(12,string[11]);
-            stament.setString(13,string[12]);
-            stament.setString(14,string[13]);
-            stament.setString(15,string[14]);
-            stament.setString(16,string[15]);
-            stament.setString(17,string[16]);
-            stament.setString(18,string[17]);
-            stament.setString(19,string[18]);
-            stament.setString(20,string[19]); 
-            stament.setString(21,string[20]);
-            stament.setString(22,string[21]); 
-            stament.setString(23,string[22]);
-            stament.setString(24,string[23]);
-            stament.setString(25,string[24]);
-            stament.setString(26,string[25]);
-            stament.setString(27,string[26]);
-            stament.setString(28,string[27]);
-            stament.setString(29,string[28]);
-            stament.setString(30,string[29]);
-            stament.setString(31,string[30]);
-            stament.setString(32,string[31]);
-            stament.setString(33,string[32]);
-       
+//            stament.setString(7,string[6]);
+//            stament.setString(8,string[7]);
+//            stament.setString(9,string[8]);
+//            stament.setString(10,string[9]);
+//            stament.setString(11,string[10]);
+//            stament.setString(12,string[11]);
+//            stament.setString(13,string[12]);
+//            stament.setString(14,string[13]);
+//            stament.setString(15,string[14]);
+//            stament.setString(16,string[15]);
+//            stament.setString(17,string[16]);
+//            stament.setString(18,string[17]);
+//            stament.setString(19,string[18]);
+//            stament.setString(20,string[19]); 
+//            stament.setString(21,string[20]);
+//            stament.setString(22,string[21]); 
+//            stament.setString(23,string[22]);
+//            stament.setString(24,string[23]);
+//            stament.setString(25,string[24]);
+//            stament.setString(26,string[25]);
+//            stament.setString(27,string[26]);
+//            stament.setString(28,string[27]);
+//            stament.setString(29,string[28]);
+//            stament.setString(30,string[29]);
+//            stament.setString(31,string[30]);
+//            stament.setString(32,string[31]);
+//            stament.setString(33,string[32]);
+//            stament.setString(34,string[33]);
             row = stament.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -110,10 +114,11 @@ public class EmployeeDAL {
     
     public int EMPLOYEE_Update (String[] string){
         int row = 0;
-        String update = "UPDATE EMPLOYEE SET  Ho=?, Ten=?, TenTiengAnh=?, NgaySinh=?, NgayThayDoi=?,NgayThayDoiCN=?,NgayBatDau=?,NgayKetThuc=?, GioiTinh=?, DTCty=?, DTNha=?"
-                + ", ECty=?, ERieng=?,NoiSinh=?, NguyenQuan=?, TamTru=?, ThuongTru=?, HonNhan=?, BaoHiem=?"
-                + ", MaLoaiNhanVien=?, MaKhoi=? ,MaTonGiao=?,MaQuocTich=?,MaDanToc=?"
-                + ", MaTinhThanh=?,MaLoaiHopDong=?,MaNoiLamViec=?,MaPhongBan=?,MaPhongCN=?,MaChucVu=?,MaHuyen=?,MaPhuThuoc=? WHERE MaNhanVien=?";
+        String update = "UPDATE EMPLOYEE SET  Ho=?, Ten=?, TenTiengAnh=?, ThuongTru=?,NoiSinh=? WHERE MaNhanVien=?";
+//                + " NgaySinh=?, NgayThayDoi=?,NgayThayDoiCN=?,NgayBatDau=?,NgayKetThuc=?, GioiTinh=?, DTCty=?, DTNha=?"
+//                + ", ECty=?, ERieng=?, NguyenQuan=?, TamTru=?, HonNhan=?, BaoHiem=?"
+//                + ", MaLoaiNhanVien=?, MaKhoi=? ,MaTonGiao=?,MaQuocTich=?,MaDanToc=?"
+//                + ", MaLoaiHopDong=?, MaTinhThanh=?,MaNoiLamViec=?,MaPhongCN=?,MaChucVu=?,MaHuyen=?,MaPhuThuoc=?,MaTo=?,Image=? 
         PreparedStatement stament;
         try {
             stament = con.prepareCall(update);          
@@ -123,34 +128,35 @@ public class EmployeeDAL {
             stament.setString(4,string[3]);
             stament.setString(5,string[4]);
             stament.setString(6,string[5]);
-            stament.setString(7,string[6]);
-            stament.setString(8,string[7]);
-            stament.setString(9,string[8]);
-            stament.setString(10,string[9]);
-            stament.setString(11,string[10]);
-            stament.setString(12,string[11]);
-            stament.setString(13,string[12]);
-            stament.setString(14,string[13]);
-            stament.setString(15,string[14]);
-            stament.setString(16,string[15]);
-            stament.setString(17,string[16]);
-            stament.setString(18,string[17]);
-            stament.setString(19,string[18]);
-            stament.setString(20,string[19]); 
-            stament.setString(21,string[20]);
-            stament.setString(22,string[21]); 
-            stament.setString(23,string[22]);
-            stament.setString(24,string[23]);
-            stament.setString(25,string[24]);
-            stament.setString(26,string[25]);
-            stament.setString(27,string[26]);
-            stament.setString(28,string[27]);
-            stament.setString(29,string[28]);
-            stament.setString(30,string[29]);
-            stament.setString(31,string[30]);
-            stament.setString(32,string[31]);
-            stament.setString(33,string[32]);
-       
+//            stament.setString(7,string[6]);
+//            stament.setString(8,string[7]);
+//            stament.setString(9,string[8]);
+//            stament.setString(10,string[9]);
+//            stament.setString(11,string[10]);
+//            stament.setString(12,string[11]);
+//            stament.setString(13,string[12]);
+//            stament.setString(14,string[13]);
+//            stament.setString(15,string[14]);
+//            stament.setString(16,string[15]);
+//            stament.setString(17,string[16]);
+//            stament.setString(18,string[17]);
+//            stament.setString(19,string[18]);
+//            stament.setString(20,string[19]); 
+//            stament.setString(21,string[20]);
+//            stament.setString(22,string[21]); 
+//            stament.setString(23,string[22]);
+//            stament.setString(24,string[23]);
+//            stament.setString(25,string[24]);
+//            stament.setString(26,string[25]);
+//            stament.setString(27,string[26]);
+//            stament.setString(28,string[27]);
+//            stament.setString(29,string[28]);
+//            stament.setString(30,string[29]);
+//            stament.setString(31,string[30]);
+//            stament.setString(32,string[31]);
+//            stament.setString(33,string[32]);
+//            stament.setString(34,string[33]);
+//
             row = stament.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeDAL.class.getName()).log(Level.SEVERE, null, ex);

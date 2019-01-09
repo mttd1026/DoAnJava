@@ -214,7 +214,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jtfDTCTY" min="-2" pref="86" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jtfBD" pref="158" max="32767" attributes="0"/>
+                                          <Component id="jtfBD" pref="166" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -245,7 +245,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jcbNoiLV" min="-2" pref="111" max="-2" attributes="0"/>
-                                  <EmptySpace pref="105" max="32767" attributes="0"/>
+                                  <EmptySpace pref="112" max="32767" attributes="0"/>
                                   <Component id="jcbKV" min="-2" pref="173" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jcbThuocPhong" max="32767" attributes="0"/>
@@ -279,12 +279,9 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtfTenTA" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtfTenTA" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="jrdNam" min="-2" pref="62" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jrdNu" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcbGT" min="-2" pref="56" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -332,10 +329,9 @@
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jtfHoLot" alignment="3" max="32767" attributes="0"/>
                               <Component id="jLabel15" alignment="3" max="-2" attributes="0"/>
-                              <Component id="jrdNam" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jrdNu" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jcbGT" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="21" max="32767" attributes="0"/>
+                          <EmptySpace pref="23" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jtfTen" alignment="3" max="32767" attributes="0"/>
@@ -548,16 +544,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfqltt">
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jrdNam">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nam"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="jrdNu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="N&#x1eef;"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel26">
           <Properties>
             <Property name="text" type="java.lang.String" value="Khu v&#x1ef1;c:"/>
@@ -733,6 +719,16 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JComboBox" name="jcbGT">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
@@ -762,10 +758,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jtfNgaySinh" min="-2" pref="178" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jrdChua" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jrddakethon" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jcbHonNhan" min="-2" pref="50" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jtfNoisinh" alignment="0" max="32767" attributes="0"/>
                               <Component id="jtfThuongtru" alignment="0" max="32767" attributes="0"/>
@@ -797,15 +791,15 @@
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jtfPhuong" max="32767" attributes="0"/>
+                                  <Component id="jtfPhuong" pref="227" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jcbtinh" max="32767" attributes="0"/>
+                                  <Component id="jcbtinh" pref="240" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jcbhuyen" max="32767" attributes="0"/>
+                                  <Component id="jcbhuyen" pref="240" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -820,15 +814,14 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jrdChua" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jrddakethon" alignment="3" max="32767" attributes="0"/>
                       <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtfTrinhdo" alignment="3" max="32767" attributes="0"/>
                       <Component id="jtfQuoctich" alignment="3" max="32767" attributes="0"/>
                       <Component id="jtfNgaySinh" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbHonNhan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="6" max="32767" attributes="0"/>
+                  <EmptySpace pref="8" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -882,16 +875,6 @@
         <Component class="javax.swing.JLabel" name="jLabel31">
           <Properties>
             <Property name="text" type="java.lang.String" value="Th&#x1b0;&#x1edd;ng tr&#xfa;:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="jrdChua">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ch&#x1b0;a k&#x1ebf;t h&#xf4;n"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="jrddakethon">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&#x110;&#xe3; k&#x1ebf;t h&#xf4;n"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtfNoisinh">
@@ -979,6 +962,16 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfNgaySinhActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JComboBox" name="jcbHonNhan">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel3">
@@ -1011,22 +1004,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel43" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel45" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jtfPhuong1" min="-2" pref="122" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jcbtinh1" pref="252" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jcbhuyen1" pref="253" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="jtfDCTT" max="32767" attributes="0"/>
+                      <Component id="jtfDCTT" pref="714" max="32767" attributes="0"/>
                       <Component id="jtfDTTT" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -1052,13 +1033,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtfTamtru" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jtfPhuong1" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jcbtinh1" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jcbhuyen1" alignment="3" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -1090,21 +1065,6 @@
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a ch&#x1ec9; t&#x1ea1;m th&#x1edd;i:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel45">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="X&#xe3;/ph&#x1b0;&#x1edd;ng:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel46">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="T&#x1ec9;nh:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel47">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Huy&#x1ec7;n:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="jtfDTN">
         </Component>
         <Component class="javax.swing.JTextField" name="jtfEmailRieng">
@@ -1114,31 +1074,6 @@
         <Component class="javax.swing.JTextField" name="jtfDCTT">
         </Component>
         <Component class="javax.swing.JTextField" name="jtfTamtru">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtfPhuong1">
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="jftPhuong"/>
-          </AccessibilityProperties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcbtinh1">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcbhuyen1">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
