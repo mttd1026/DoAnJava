@@ -58,7 +58,7 @@ public class Employee extends javax.swing.JFrame {
         String MaCV = "";
         String MaLHD = "";
         String MaPhongThuoc = "";
-//        String MaTo = "";
+        String MaTo = "";
         String MaNLV = "";
         String MaLNV = "";
         String MaKhoi = "";
@@ -94,7 +94,7 @@ public class Employee extends javax.swing.JFrame {
                 MaPhongCN = rs.getString("MaPhongCN");
                 MaLHD =rs.getString("MaLoaiHopDong");
                 MaPhongThuoc =rs.getString("MaPhuThuoc");
-//                MaTo =rs.getString("MaTo");
+                MaTo =rs.getString("MaTo");
                 MaCV =rs.getString("MaChucVu");
                 MaKhoi = rs.getString("MaKhoi");
                 MaTG = rs.getString("MaTonGiao");
@@ -137,7 +137,7 @@ public class Employee extends javax.swing.JFrame {
             ResultSet rsKhoi = con.getData("SELECT * from khoi");
             ResultSet rsPhongCN = con.getData("SELECT * from phong_tt_cn");
             ResultSet rsPhongThuoc = con.getData("SELECT * from phuthuocphong_tt_cn");
-//            ResultSet rsTo = con.getData("SELECT * from to");
+            ResultSet rsTo = con.getData("SELECT * from to");
             ResultSet rsNoiLamViec = con.getData("SELECT * from noilamviec");
             ResultSet rsKhuVuc = con.getData("SELECT * from khuvuc");
             ResultSet rsGiamsatkhuvuc = con.getData("SELECT * from khuvuc");
@@ -162,9 +162,9 @@ public class Employee extends javax.swing.JFrame {
             while (rsPhongThuoc.next()) {
                 this.jcbThuocPhong.addItem(rsPhongThuoc.getString("MaPhuThuoc"));
             }
-//            while (rsTo.next()) {
-//                this.jcbTo.addItem(rsTo.getString("TenTo"));
-//            }  
+            while (rsTo.next()) {
+               this.jcbTo.addItem(rsTo.getString("TenTo"));
+            }  
             while (rsNoiLamViec.next()) {
                 this.jcbNoiLV.addItem(rsNoiLamViec.getString("MaNoiLamViec"));
             }    
@@ -193,16 +193,38 @@ public class Employee extends javax.swing.JFrame {
      
      
     public void insertData() {
-        String[] string = {jtfMaNV.getText(), jcbLoaiHopDong.getSelectedItem().toString(), jcbChucvu.getSelectedItem().toString(),
-//            jcbTo.getSelectedItem().toString(),
-            jcbLoainhanvien.getSelectedItem().toString(), jtfHoLot.getText(),jtfNgaySinh.getText(),jtfNgayThayDoi.getText(),jtfNgayThayDoiCN.getText(),jtfBD.getText(),jtfHDKT.getText(),
-            jtfTen.getText(), jtfBHXH.getText(), jtfDCTT.getText(), jcbPhong.getSelectedItem().toString(), jtfNoisinh.getText(),
-            jcbNoiLV.getSelectedItem().toString(), jcbKV.getSelectedItem().toString(), jcbKhoi.getSelectedItem().toString(),
-            jcbThuocPhong.getSelectedItem().toString(),jcbtinh1.getSelectedItem().toString(),jcbhuyen.getSelectedItem().toString(),
-            jcbhuyen1.getSelectedItem().toString(),jtfDTCTY.getText(),jtfDTN.getText(),jtfDTTT.getText(),jtfDantoc.getText(),
-            jtfEmailCTY.getText(),jtfEmailRieng.getText(),jtfNguyenquan.getText(),jtfNoisinh.getText(),jtfqltt.getText(),
-            jtfPhuong.getText(),jtfQuoctich.getText(),jtfTenTA.getText(),jtfTongiao.getText(),jtfTrinhdo.getText(),jtfPhuong1.getText(),
-            jtfThuongtru.getText(), jtfTamtru.getText(), jcbGSKV.getSelectedItem().toString(), jcbtinh.getSelectedItem().toString()};
+        String[] string = {
+            jtfMaNV.getText(),
+            jtfHoLot.getText(),
+            jtfTen.getText(),
+            jtfTenTA.getText(),
+            jtfNgaySinh.getText(),
+            jtfNgayThayDoi.getText(),
+            jtfNgayThayDoiCN.getText(),
+            jtfBD.getText(),
+            jtfHDKT.getText(),
+            jtfDTCTY.getText(),
+            jtfDTN.getText(),
+            jtfEmailCTY.getText(),
+            jtfEmailRieng.getText(),
+            jtfNoisinh.getText(),
+            jtfNguyenquan.getText(),
+            jtfTamtru.getText(),
+            jtfThuongtru.getText(),
+            jtfBHXH.getText(),
+            jcbLoainhanvien.getSelectedItem().toString(),
+            jcbKhoi.getSelectedItem().toString(),
+            jtfTongiao.getText(),
+            jtfQuoctich.getText(),
+            jtfDantoc.getText(),
+            jcbLoaiHopDong.getSelectedItem().toString(),
+            jcbNoiLV.getSelectedItem().toString(),
+            jcbPhong.getSelectedItem().toString(),
+            jcbChucvu.getSelectedItem().toString(),
+            jcbtinh.getSelectedItem().toString(),
+            jcbhuyen.getSelectedItem().toString(),
+            jcbThuocPhong.getSelectedItem().toString(),
+            jcbTo.getSelectedItem().toString()};
         int insert = con.EMPLOYEE_Insert(string);
         if (insert > 0) {
             JOptionPane.showMessageDialog(this, "Thêm Employee thành công!");
@@ -212,6 +234,46 @@ public class Employee extends javax.swing.JFrame {
        showData();
     }
 
+    public void updateData() {
+        String[] stringSQL = {jtfMaNV.getText(),
+            jtfHoLot.getText(),
+            jtfTen.getText(),
+            jtfTenTA.getText(),
+            jtfNgaySinh.getText(),
+            jtfNgayThayDoi.getText(),
+            jtfNgayThayDoiCN.getText(),
+            jtfBD.getText(),
+            jtfHDKT.getText(),
+            jtfDTCTY.getText(),
+            jtfDTN.getText(),
+            jtfEmailCTY.getText(),
+            jtfEmailRieng.getText(),
+            jtfNoisinh.getText(),
+            jtfNguyenquan.getText(),
+            jtfTamtru.getText(),
+            jtfThuongtru.getText(),
+            jtfBHXH.getText(),
+            jcbLoainhanvien.getSelectedItem().toString(),
+            jcbKhoi.getSelectedItem().toString(),
+            jtfTongiao.getText(),
+            jtfQuoctich.getText(),
+            jtfDantoc.getText(),
+            jcbLoaiHopDong.getSelectedItem().toString(),
+            jcbNoiLV.getSelectedItem().toString(),
+            jcbPhong.getSelectedItem().toString(),
+            jcbChucvu.getSelectedItem().toString(),
+            jcbtinh.getSelectedItem().toString(),
+            jcbhuyen.getSelectedItem().toString(),
+            jcbThuocPhong.getSelectedItem().toString(),
+            jcbTo.getSelectedItem().toString()};
+        int update = con.EMPLOYEE_Update(stringSQL);
+        if (update > 0) {
+            JOptionPane.showMessageDialog(this, "Sửa thành công!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Sửa không thành công!");
+        }
+        showData();
+    }
     
      public void deleteData (){
         String[] stringSQL = {jtfMaNV.getText()};
@@ -1016,6 +1078,12 @@ public class Employee extends javax.swing.JFrame {
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
 //        stateButton(false);
+        HideTextBox(true);
+        btSave.setEnabled(true);
+        flag = 2;
+        btNew.setEnabled(false);
+        btEdit.setEnabled(false);
+        btDelete.setEnabled(false);
     }//GEN-LAST:event_btEditActionPerformed
 
     private void btCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelActionPerformed
