@@ -51,9 +51,9 @@ public class Employee extends javax.swing.JFrame {
     }
     
     public void showData() {
-           String[] columnNames = {"MãNV", "Tên Tiếng Anh"
-//                  , "MãLNV", "MãKhối" ,"MãTG","MãQT","MãDT"," Họ lót", "Tên","Ngày Sinh", "Ngày Thay Đổi", "Giới Tính", "DTCty", "DTNhà"
-//                ," ECty", "ERiêng","Nơi Sinh", "Nguyên Quán", "Tạm Trú", "Thường Trú", "Hôn Nhân", "Bảo Hiểm","Ngày Thay Đổi CN","Ngày Bắt Đầu","Ngày Kết Thúc"
+           String[] columnNames = {"MãNV", "Tên Tiếng Anh"," Họ lót", "Tên", "Thường Trú","Nơi Sinh"
+//                  , "MãLNV", "MãKhối" ,"MãTG","MãQT","MãDT","Ngày Sinh", "Ngày Thay Đổi", "Giới Tính", "DTCty", "DTNhà"
+//                ," ECty", "ERiêng", "Nguyên Quán", "Tạm Trú", "Hôn Nhân", "Bảo Hiểm","Ngày Thay Đổi CN","Ngày Bắt Đầu","Ngày Kết Thúc"
 //                ,"MãCV","MãLHĐ","MãPhòngCN","MãPhòngThuộc","MãNLV"
                 };
 
@@ -65,6 +65,10 @@ public class Employee extends javax.swing.JFrame {
 
         String MaNV = "";
         String TenTiengAnh = "";
+        String HoLot = "";
+        String Ten = "";
+        String ThuongTru = "";
+        String NoiSinh = "";
 //        String MaPhongCN = "";
 //        String MaCV = "";
 //        String MaLHD = "";
@@ -76,8 +80,7 @@ public class Employee extends javax.swing.JFrame {
 //        String MaTG = "";
 //        String MaQT = "";
 //        String MaDT = "";
-//        String HoLot = "";
-//        String Ten = "";
+
 
 //        String NgaySinh = "";
 //        String NgayThayDoi = "";
@@ -89,10 +92,10 @@ public class Employee extends javax.swing.JFrame {
 //        String DTNha = "";
 //        String ECty = "";
 //        String ERieng = "";
-//        String NoiSinh = "";
+
 //        String NguyenQuan = "";
 //        String TamTru = "";
-//        String ThuongTru = "";
+
 //        String HonNhan = "";
 //        String BaoHiem = "";
         
@@ -102,6 +105,10 @@ public class Employee extends javax.swing.JFrame {
             while (rs.next()) {
                 MaNV = rs.getString("MaNhanVien");
                 TenTiengAnh = rs.getString("TenTiengAnh");
+                HoLot = rs.getString("Ho");
+                Ten = rs.getString("Ten");
+                ThuongTru = rs.getString("ThuongTru");
+                NoiSinh = rs.getString("NoiSinh");
 //                MaLNV = rs.getString("MaLoaiNhanVien");
 //                MaPhongCN = rs.getString("MaPhongCN");
 //                MaLHD =rs.getString("MaLoaiHopDong");
@@ -112,8 +119,7 @@ public class Employee extends javax.swing.JFrame {
 //                MaTG = rs.getString("MaTonGiao");
 //                MaQT = rs.getString("MaQuocTich");
 //                MaDT = rs.getString("MaDanToc");
-//                HoLot = rs.getString("Ho");
-//                Ten = rs.getString("Ten");
+                
 
 //                NgaySinh = rs.getString("NgaySinh");
 //                NgayThayDoi = rs.getString("NgayThayDoi");
@@ -125,18 +131,18 @@ public class Employee extends javax.swing.JFrame {
 //                DTNha = rs.getString("DTNha");
 //                ECty = rs.getString("ECty");
 //                ERieng = rs.getString("ERieng");
-//                NoiSinh = rs.getString("NoiSinh");
+
 //                NguyenQuan = rs.getString("NguyenQuan");
 //                TamTru = rs.getString("TamTru");
-//                ThuongTru = rs.getString("ThuongTru");
+
 //                HonNhan = rs.getString("HonNhan");
 //                BaoHiem = rs.getString("BaoHiem");
 
 
-                model.addRow(new Object[]{MaNV, TenTiengAnh
+                model.addRow(new Object[]{MaNV, TenTiengAnh, HoLot, Ten,NoiSinh,ThuongTru
 //                        , 
-//                    MaLNV,MaPhongCN,MaLHD,MaPhongThuoc,MaCV, MaKhoi, MaTG, MaQT, MaDT, HoLot, Ten, NgaySinh,
-//                    NgayThayDoi,NgayThayDoiCN,NgayBatDau,NgayKetThuc, GioiTinh, DTCty, DTNha, ECty, ERieng, NoiSinh, NguyenQuan, TamTru,ThuongTru,HonNhan,BaoHiem
+//                    MaLNV,MaPhongCN,MaLHD,MaPhongThuoc,MaCV, MaKhoi, MaTG, MaQT, MaDT NgaySinh,
+//                    NgayThayDoi,NgayThayDoiCN,NgayBatDau,NgayKetThuc, GioiTinh, DTCty, DTNha, ECty, ERieng, NguyenQuan, TamTru,,HonNhan,BaoHiem
                 });
             }
         } catch (SQLException ex) {
@@ -207,7 +213,12 @@ public class Employee extends javax.swing.JFrame {
     //Lấy dữ liệu từ jTable ứng với từng thuộc tính trên UI
     public void getSelectedData(){
         int selectRow = jTable1.getSelectedRow();
-        jtfMaNV.setText(jTable1.getValueAt(selectRow,0).toString());       
+        jtfMaNV.setText(jTable1.getValueAt(selectRow,0).toString());   
+        jtfTenTA.setText(jTable1.getValueAt(selectRow,1).toString());
+        jtfTen.setText(jTable1.getValueAt(selectRow,2).toString());
+        jtfHoLot.setText(jTable1.getValueAt(selectRow,3).toString());
+        jtfThuongtru.setText(jTable1.getValueAt(selectRow,4).toString());
+        jtfNoisinh.setText(jTable1.getValueAt(selectRow,5).toString());
         
     }
      
@@ -629,6 +640,8 @@ public class Employee extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jcbGT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -854,6 +867,8 @@ public class Employee extends javax.swing.JFrame {
                 jtfNgaySinhActionPerformed(evt);
             }
         });
+
+        jcbHonNhan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chưa Kết Hôn", "Kết Hôn" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
