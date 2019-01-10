@@ -47,6 +47,42 @@ public class Employee extends javax.swing.JFrame {
         
     }
 
+    public void Test() {
+        String manv=jtfMaNV.getText().toString().trim();
+        String ho=jtfHoLot.getText().toString().trim();
+        String ten=jtfTen.getText().toString().trim();
+        String BHXH=jtfBHXH.getText().toString().trim();
+        String Path=path.getText().toString().trim();
+       
+        if (manv.equals("")) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mã nhân viên");
+            jtfMaNV.requestFocus();
+            return;
+        }
+
+        if (ho.equals("")) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập Họ nhân viên");
+            jtfHoLot.requestFocus();
+            return;
+        }
+            
+        if (ten.equals("")) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập Tên nhân viên");
+            jtfTen.requestFocus();
+            return;
+        }
+        if (BHXH.equals("")) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập Bảo Hiểm Xã Hội");
+            jtfBHXH.requestFocus();
+            return;
+        }
+        if (Path.equals("")) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa bỏ Hình");
+            path.requestFocus();
+            return;
+        }
+    }
+    
     Employee(EmployeeList aThis) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -57,9 +93,9 @@ public class Employee extends javax.swing.JFrame {
     }
     
     public void showData() {
-           String[] columnNames = {"MãNV", "Tên Tiếng Anh"," Họ lót", "Tên", "Thường Trú","Nơi Sinh"
-//                  , "MãLNV", "MãKhối" ,"MãTG","MãQT","MãDT","Ngày Sinh", "Ngày Thay Đổi", "Giới Tính", "DTCty", "DTNhà"
-//                ," ECty", "ERiêng", "Nguyên Quán", "Tạm Trú", "Hôn Nhân", "Bảo Hiểm","Ngày Thay Đổi CN","Ngày Bắt Đầu","Ngày Kết Thúc"
+           String[] columnNames = {"MãNV", "Tên Tiếng Anh"," Họ lót", "Tên", "Thường Trú","Nơi Sinh", "DTCty", "DTNhà"," ECty", "ERiêng", "Nguyên Quán", "Tạm Trú", "Bảo Hiểm","Image"
+//                  , "MãLNV", "MãKhối" ,"MãTG","MãQT","MãDT","Ngày Sinh", "Ngày Thay Đổi", "Giới Tính"
+//                 "Hôn Nhân","Ngày Thay Đổi CN","Ngày Bắt Đầu","Ngày Kết Thúc"
 //                ,"MãCV","MãLHĐ","MãPhòngCN","MãPhòngThuộc","MãNLV"
                 };
 
@@ -75,6 +111,14 @@ public class Employee extends javax.swing.JFrame {
         String Ten = "";
         String ThuongTru = "";
         String NoiSinh = "";
+        String DTCty = "";
+        String DTNha = "";
+        String ECty = "";
+        String ERieng = "";
+        String NguyenQuan = "";
+        String TamTru = "";
+        String BaoHiem = "";
+        String Image = "";
 //        String MaPhongCN = "";
 //        String MaCV = "";
 //        String MaLHD = "";
@@ -94,16 +138,12 @@ public class Employee extends javax.swing.JFrame {
 //        String NgayBatDau = "";
 //        String NgayKetThuc = "";
 //        String GioiTinh = "";
-//        String DTCty = "";
-//        String DTNha = "";
-//        String ECty = "";
-//        String ERieng = "";
 
-//        String NguyenQuan = "";
-//        String TamTru = "";
+
+
 
 //        String HonNhan = "";
-//        String BaoHiem = "";
+
         
 
         ResultSet rs = con.getData("SELECT * FROM nhanvien");
@@ -115,6 +155,14 @@ public class Employee extends javax.swing.JFrame {
                 Ten = rs.getString("Ten");
                 ThuongTru = rs.getString("ThuongTru");
                 NoiSinh = rs.getString("NoiSinh");
+                DTCty = rs.getString("DTCty");
+                DTNha = rs.getString("DTNha");
+                ECty = rs.getString("ECty");
+                ERieng = rs.getString("ERieng");
+                NguyenQuan = rs.getString("NguyenQuan");
+                TamTru = rs.getString("TamTru");
+                BaoHiem = rs.getString("BaoHiem");
+                Image = rs.getString("Image");
 //                MaLNV = rs.getString("MaLoaiNhanVien");
 //                MaPhongCN = rs.getString("MaPhongCN");
 //                MaLHD =rs.getString("MaLoaiHopDong");
@@ -133,19 +181,15 @@ public class Employee extends javax.swing.JFrame {
 //                NgayBatDau = rs.getString("NgayBatDau");
 //                NgayKetThuc = rs.getString("NgayKetThuc");
 //                GioiTinh = rs.getString("GioiTinh");
-//                DTCty = rs.getString("DTCty");
-//                DTNha = rs.getString("DTNha");
-//                ECty = rs.getString("ECty");
-//                ERieng = rs.getString("ERieng");
+                
 
-//                NguyenQuan = rs.getString("NguyenQuan");
-//                TamTru = rs.getString("TamTru");
+                
 
 //                HonNhan = rs.getString("HonNhan");
-//                BaoHiem = rs.getString("BaoHiem");
+//                
 
 
-                model.addRow(new Object[]{MaNV, TenTiengAnh, HoLot, Ten,NoiSinh,ThuongTru
+                model.addRow(new Object[]{MaNV, TenTiengAnh, HoLot, Ten,NoiSinh,ThuongTru, DTCty, DTNha, ECty, ERieng, NguyenQuan, TamTru,BaoHiem,Image
 //                        , 
 //                    MaLNV,MaPhongCN,MaLHD,MaPhongThuoc,MaCV, MaKhoi, MaTG, MaQT, MaDT NgaySinh,
 //                    NgayThayDoi,NgayThayDoiCN,NgayBatDau,NgayKetThuc, GioiTinh, DTCty, DTNha, ECty, ERieng, NguyenQuan, TamTru,,HonNhan,BaoHiem
@@ -170,7 +214,8 @@ public class Employee extends javax.swing.JFrame {
             ResultSet rsGiamsatkhuvuc = con.getData("SELECT * from khuvuc");
             ResultSet rsTinh = con.getData("SELECT * from tinh_thanh");
             ResultSet rsHuyen = con.getData("SELECT * from huyen");
-            
+//            ResultSet rsGioiTinh = con.getData("SELECT * from gioitinh");
+//            ResultSet rsHonNhan = con.getData("SELECT * from honnhan");
             
             
             while (rsLoaiHopDong.next()) {
@@ -210,6 +255,13 @@ public class Employee extends javax.swing.JFrame {
             while (rsHuyen.next()) {
                 this.jcbhuyen.addItem(rsHuyen.getString("MaHuyen"));
             } 
+//            
+//            while (rsGioiTinh.next()) {
+//                this.jcbGT.addItem(rsHuyen.getString("MaGT"));
+//            } 
+//            while (rsHonNhan.next()) {
+//                this.jcbHonNhan.addItem(rsHuyen.getString("MaHonNhan"));
+//            } 
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex, "Thông báo lỗi", 1);
@@ -225,6 +277,15 @@ public class Employee extends javax.swing.JFrame {
         jtfHoLot.setText(jTable1.getValueAt(selectRow,3).toString());
         jtfThuongtru.setText(jTable1.getValueAt(selectRow,4).toString());
         jtfNoisinh.setText(jTable1.getValueAt(selectRow,5).toString());
+        jtfDTCTY.setText(jTable1.getValueAt(selectRow,6).toString());
+        jtfDTN.setText(jTable1.getValueAt(selectRow,7).toString());
+        jtfEmailCTY.setText(jTable1.getValueAt(selectRow,8).toString());
+        jtfEmailRieng.setText(jTable1.getValueAt(selectRow,9).toString());
+        jtfThuongtru.setText(jTable1.getValueAt(selectRow,10).toString());
+        jtfTamtru.setText(jTable1.getValueAt(selectRow,11).toString());
+        jtfBHXH.setText(jTable1.getValueAt(selectRow,12).toString());
+        path.setText(jTable1.getValueAt(selectRow,13).toString());
+
         
     }
      
@@ -236,6 +297,14 @@ public class Employee extends javax.swing.JFrame {
             jtfTen.getText(),
             jtfThuongtru.getText(),
             jtfNoisinh.getText(),
+            jtfDTCTY.getText(),
+            jtfDTN.getText(),
+            jtfEmailCTY.getText(),
+            jtfEmailRieng.getText(),
+            jtfNguyenquan.getText(),
+            jtfTamtru.getText(),
+            jtfBHXH.getText(),
+            path.getText(),
 //            jtfNgaySinh.getText(),
             
 //            jtfEmailRieng.getText(),
@@ -243,13 +312,9 @@ public class Employee extends javax.swing.JFrame {
 //            jtfNgayThayDoiCN.getText(),
 //            jtfBD.getText(),
 //            jtfHDKT.getText(),
-//            jtfDTCTY.getText(),
-//            jtfDTN.getText(),
-//            jtfEmailCTY.getText(),
+//            
             
-//            jtfNguyenquan.getText(),
-//            jtfTamtru.getText(),
-//            jtfBHXH.getText(),
+           
 //            path.getText(),
 //            jcbLoainhanvien.getSelectedItem().toString(),
 //            jcbKhoi.getSelectedItem().toString(),
@@ -269,9 +334,9 @@ public class Employee extends javax.swing.JFrame {
         if (insert > 0) {
             JOptionPane.showMessageDialog(this, "Thêm Employee thành công!");
         } else {
-            JOptionPane.showMessageDialog(this, "Thêm Employee không thành công!");
+            Test();
         }
-       showData();
+//       showData();
     }
 
     public void updateData() {
@@ -319,19 +384,7 @@ public class Employee extends javax.swing.JFrame {
         showData();
     }
     
-//     public void deleteData (){
-//        String[] stringSQL = {jtfMaNV.getText()};
-//        
-//        int delete = con.EMPLOYEE_Delete(stringSQL);
-//      
-//        if(delete > 0){
-//            JOptionPane.showMessageDialog(this,"Xóa thành công!");
-//        }else {
-//            JOptionPane.showMessageDialog(this,"Xóa không thành công!");
-//        }
-//        showData();
-//  
-//    }
+
      
     //Tắt chương trình bằng ESC
     public void Keylistener(){
@@ -829,7 +882,9 @@ public class Employee extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25)
                             .addComponent(jcbGSKV)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin cá nhân", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
@@ -1222,7 +1277,7 @@ public class Employee extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-         getSelectedData();
+        getSelectedData();
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**

@@ -60,9 +60,9 @@ public class EmployeeDAL {
     //Viet ham insert du lieu
     public int EMPLOYEE_Insert (String[] string){
         int row = 0;
-        String insert = "INSERT INTO nhanvien(MaNhanVien,TenTiengAnh,Ho,Ten,ThuongTru,NoiSinh) VALUES(?,?,?,?,?,?)";
+        String insert = "INSERT INTO nhanvien(MaNhanVien,TenTiengAnh,Ho,Ten,ThuongTru,NoiSinh,DTCty, DTNha,ERieng,ECty,NguyenQuan, TamTru, BaoHiem,Image) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 //                + ""
-//                + ", NgayThayDoi,NgayThayDoiCN,NgayBatDau,NgayKetThuc, GioiTinh.NgaySinh"DTCty, DTNha,ERieng,ECty,NguyenQuan, TamTru, BaoHiem
+//                + ", NgayThayDoi,NgayThayDoiCN,NgayBatDau,NgayKetThuc, GioiTinh.NgaySinh"
 //                + ",  HonNhan"
 //                + ", MaLoaiNhanVien, MaKhoi ,MaTonGiao,MaQuocTich,MaDanToc"
 //                + ", MaLoaiHopDong, MaTinhThanh,MaNoiLamViec,MaPhongCN,MaChucVu,MaHuyen,MaPhuThuoc,MaTo)"
@@ -77,14 +77,14 @@ public class EmployeeDAL {
             stament.setString(4,string[3]);
             stament.setString(5,string[4]);
             stament.setString(6,string[5]);
-//            stament.setString(7,string[6]);
-//            stament.setString(8,string[7]);
-//            stament.setString(9,string[8]);
-//            stament.setString(10,string[9]);
-//            stament.setString(11,string[10]);
-//            stament.setString(12,string[11]);
-//            stament.setString(13,string[12]);
-//            stament.setString(14,string[13]);
+            stament.setString(7,string[6]);
+            stament.setString(8,string[7]);
+            stament.setString(9,string[8]);
+            stament.setString(10,string[9]);
+            stament.setString(11,string[10]);
+            stament.setString(12,string[11]);
+            stament.setString(13,string[12]);
+            stament.setString(14,string[13]);
 //            stament.setString(15,string[14]);
 //            stament.setString(16,string[15]);
 //            stament.setString(17,string[16]);

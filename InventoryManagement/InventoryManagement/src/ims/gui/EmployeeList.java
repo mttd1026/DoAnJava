@@ -201,7 +201,7 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
             jTable1.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 780, 240));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 850, 100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -226,10 +226,9 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
             if (selectedRow >= 0) {
                 employeeToDelete = String.valueOf(jTable1.getSelectedRow());
 		if (employeeToDelete != null) {
-                    String message = String.format( "Do you really want to delete?"); 
-                    int answer = JOptionPane.showConfirmDialog(this, message, "Confirmation", JOptionPane.YES_NO_OPTION);
-                    if (answer == JOptionPane.OK_OPTION) {                                
-                        
+                    String message = String.format( "Bạn thật sự muốn xoá sao?"); 
+                    int answer = JOptionPane.showConfirmDialog(this, message, "Đương Nhiên", JOptionPane.YES_NO_OPTION);
+                    if (answer == JOptionPane.OK_OPTION) {   
                         DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
                         model.removeRow(selectedRow);
                         con.EMPLOYEE_Delete(M);
