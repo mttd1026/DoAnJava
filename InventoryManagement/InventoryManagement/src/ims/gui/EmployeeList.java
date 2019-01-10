@@ -128,7 +128,7 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
 
         jToolBar1.setRollover(true);
 
-        btNew.setText("Thêm ");
+        btNew.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Desktop\\Add-Folder-icon.png")); // NOI18N
         btNew.setFocusable(false);
         btNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -140,7 +140,7 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
         jToolBar1.add(btNew);
         jToolBar1.add(jSeparator1);
 
-        jButton2.setText("Sửa");
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Desktop\\document-edit-icon.png")); // NOI18N
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -152,7 +152,7 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
         jToolBar1.add(jButton2);
         jToolBar1.add(jSeparator2);
 
-        jButton3.setText("Xóa");
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Desktop\\Delete-file-icon.png")); // NOI18N
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -164,14 +164,14 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
         jToolBar1.add(jButton3);
         jToolBar1.add(jSeparator3);
 
-        jButton4.setText("In");
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Desktop\\copy-icon.png")); // NOI18N
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton4);
         jToolBar1.add(jSeparator4);
 
-        jButton5.setText("Thoát");
+        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Desktop\\Users-Exit-icon.png")); // NOI18N
         jButton5.setFocusable(false);
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -201,7 +201,7 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
             jTable1.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 790, 240));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 780, 240));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -219,9 +219,28 @@ public final class EmployeeList extends javax.swing.JFrame implements ActionList
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-       Employee emGui= new Employee();
-       emGui.setVisible(true);
-       showData();
+       String employeeToDelete ;
+        try {
+            int selectedRow = jTable1.getSelectedRow();
+            String[] M = {jTable1.getValueAt(selectedRow, 0).toString()};
+            if (selectedRow >= 0) {
+                employeeToDelete = String.valueOf(jTable1.getSelectedRow());
+		if (employeeToDelete != null) {
+                    String message = String.format( "Do you really want to delete?"); 
+                    int answer = JOptionPane.showConfirmDialog(this, message, "Confirmation", JOptionPane.YES_NO_OPTION);
+                    if (answer == JOptionPane.OK_OPTION) {                                
+                        
+                        DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
+                        model.removeRow(selectedRow);
+                        con.EMPLOYEE_Delete(M);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            String message = "Could not delete category. Error:\n"+ ex.getMessage();
+            JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

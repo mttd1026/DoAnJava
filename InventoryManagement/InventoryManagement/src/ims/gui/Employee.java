@@ -46,6 +46,12 @@ public class Employee extends javax.swing.JFrame {
         Keylistener();
         
     }
+
+    Employee(EmployeeList aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     public void HideTextBox (boolean a){
         jtfMaNV.setEnabled(a);    
     }
@@ -270,12 +276,12 @@ public class Employee extends javax.swing.JFrame {
 
     public void updateData() {
         String[] stringSQL = {
-            jtfMaNV.getText(),
+            jtfHoLot.getText(),            
+            /*jtfTen.getText(),
             jtfTenTA.getText(),
-            jtfHoLot.getText(),
-            jtfTen.getText(),
             jtfThuongtru.getText(),
-            jtfNoisinh.getText(),
+            jtfNoisinh.getText(),*/
+            jtfMaNV.getText(),
 //            jtfNgaySinh.getText(),
 //            jtfNgayThayDoi.getText(),
 //            jtfNgayThayDoiCN.getText(),
@@ -313,19 +319,19 @@ public class Employee extends javax.swing.JFrame {
         showData();
     }
     
-     public void deleteData (){
-        String[] stringSQL = {jtfMaNV.getText()};
-        
-        int delete = con.EMPLOYEE_Delete(stringSQL);
-      
-        if(delete > 0){
-            JOptionPane.showMessageDialog(this,"Xóa thành công!");
-        }else {
-            JOptionPane.showMessageDialog(this,"Xóa không thành công!");
-        }
-        showData();
-  
-    }
+//     public void deleteData (){
+//        String[] stringSQL = {jtfMaNV.getText()};
+//        
+//        int delete = con.EMPLOYEE_Delete(stringSQL);
+//      
+//        if(delete > 0){
+//            JOptionPane.showMessageDialog(this,"Xóa thành công!");
+//        }else {
+//            JOptionPane.showMessageDialog(this,"Xóa không thành công!");
+//        }
+//        showData();
+//  
+//    }
      
     //Tắt chương trình bằng ESC
     public void Keylistener(){
@@ -1093,17 +1099,17 @@ public class Employee extends javax.swing.JFrame {
             btDelete.setEnabled(true);
         }else if(flag == 2){
             updateData();
-            btNew.setEnabled(true);
-            btEdit.setEnabled(true);
-            btDelete.setEnabled(true); 
-        }else{
-            if(this.jtfMaNV.getText().length() == 0)
-                JOptionPane.showMessageDialog(null,"Bạn cần chọn Mã nhân viên để xóa","Thông báo lỗi!", 1);
-            else
-            {
-                if(JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa?", "Thông báo!", 2)==0)
-                    deleteData();
-            }         
+//            btNew.setEnabled(true);
+//            btEdit.setEnabled(true);
+//            btDelete.setEnabled(true); 
+//        }else{
+//            if(this.jtfMaNV.getText().length() == 0)
+//                JOptionPane.showMessageDialog(null,"Bạn cần chọn Mã nhân viên để xóa","Thông báo lỗi!", 1);
+//            else
+//            {
+//                if(JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa?", "Thông báo!", 2)==0)
+//                    deleteData();
+//            }         
             btNew.setEnabled(true);
             btEdit.setEnabled(true);
             btDelete.setEnabled(true);
@@ -1176,13 +1182,18 @@ public class Employee extends javax.swing.JFrame {
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
         // TODO add your handling code here:
         HideTextBox(true);
-        btSave.setEnabled(true);
-        if (flag == 3) {
-            deleteData();
-            btNew.setEnabled(true);
-            btEdit.setEnabled(true);
-            btDelete.setEnabled(true);
-        }
+//        btSave.setEnabled(true);
+//        if (flag == 3) {
+//            deleteData();
+//            btNew.setEnabled(true);
+//            btEdit.setEnabled(true);
+//            btDelete.setEnabled(true);
+//        }
+        btSave.setEnabled(false);
+        flag = 3;
+        btNew.setEnabled(true);
+        btEdit.setEnabled(true);
+        btDelete.setEnabled(true);
     }//GEN-LAST:event_btDeleteActionPerformed
 
     private void btChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChooseActionPerformed

@@ -114,7 +114,7 @@ public class EmployeeDAL {
     
     public int EMPLOYEE_Update (String[] string){
         int row = 0;
-        String update = "UPDATE EMPLOYEE SET  Ho=?, Ten=?, TenTiengAnh=?, ThuongTru=?,NoiSinh=? WHERE MaNhanVien=?";
+        String update = "UPDATE EMPLOYEE SET Ho=? WHERE MaNhanVien=?";
 //                + " NgaySinh=?, NgayThayDoi=?,NgayThayDoiCN=?,NgayBatDau=?,NgayKetThuc=?, GioiTinh=?, DTCty=?, DTNha=?"
 //                + ", ECty=?, ERieng=?, NguyenQuan=?, TamTru=?, HonNhan=?, BaoHiem=?"
 //                + ", MaLoaiNhanVien=?, MaKhoi=? ,MaTonGiao=?,MaQuocTich=?,MaDanToc=?"
@@ -123,11 +123,11 @@ public class EmployeeDAL {
         try {
             stament = con.prepareCall(update);          
             stament.setString(1,string[0]);
-            stament.setString(2,string[1]);
+            /*stament.setString(2,string[1]);
             stament.setString(3,string[2]);
             stament.setString(4,string[3]);
             stament.setString(5,string[4]);
-            stament.setString(6,string[5]);
+            stament.setString(6,string[5]);*/
 //            stament.setString(7,string[6]);
 //            stament.setString(8,string[7]);
 //            stament.setString(9,string[8]);
